@@ -97,6 +97,26 @@ function validateAuthInput(email, password, isRegister = false) {
     return true;
 }
 
+
+function toggleNightMode() {
+    document.body.classList.toggle('night-mode');
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButton = document.getElementById("toggle-night-mode");
+
+  toggleButton.addEventListener("click", () => {
+    document.body.classList.toggle("night-mode");
+
+    if (document.body.classList.contains("night-mode")) {
+      toggleButton.textContent = "ノーマルモード";
+    } else {
+      toggleButton.textContent = "ナイトモード";
+    }
+  });
+});
+
+
+
 // 投稿処理
 function createPost(author, content) {
     if (!currentUser) {
@@ -533,7 +553,7 @@ window.addEventListener('unload', function() {
 <body>
     <div class="container">
         <h1>掲示板アプリ</h1>
-        
+        <button id="toggle-night-mode" class="night-mode-btn">ナイトモード</button>
         <!-- メッセージ表示エリア -->
         <div id="messageArea"></div>
 
